@@ -1,0 +1,30 @@
+.container {
+    max-width: 1000px;
+    margin:4rem auto;
+    display: flex;
+    
+    .textContainer {
+        max-width: 400px;
+        margin: 0 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+        
+        .title{
+            width: 100%;
+            font-size: 3rem;
+            color:var(--pink-300);
+            margin:1.4rem 0;
+        }
+        .subtitle{
+            width: 100%;
+            font-size: 2.5rem;
+            font-weight:500;
+            margin:0 0 2rem 0;
+        }
+    }
+
+    
+}
