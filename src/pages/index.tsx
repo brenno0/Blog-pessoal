@@ -3,9 +3,8 @@ import Header from "../components/header";
 import styles from '../styles/home.module.scss';
 import Image  from 'next/image';
 import HomeSvg from '../../public/Home.svg';
-import Twitter from '../../public/twitter.svg';
-import Linkedin from '../../public/Linkedin.svg';
-
+import { AiOutlineTwitter,AiFillGithub } from 'react-icons/ai'
+import { FaLinkedinIn } from 'react-icons/fa'
 
 export default function Home() {
   return (
@@ -22,11 +21,11 @@ export default function Home() {
             good experience at the end of the product,
             the design will be considered unsuccessful in my opinion.
           </p>
-          <div className={styles.formContainer}>
-            <button type="button" className={`${styles.twitter} ${styles.buttonLogin}`}><Image src={Twitter} alt="Twitter Logo" />Twitter</button>
-            <button type="button" className={`${styles.linkedin} ${styles.buttonLogin}`}><Image src={Linkedin} alt="Linkedin Logo" />Linkedin</button>
-            <button type="button" className={`${styles.twitter} ${styles.buttonLogin}`}><Image src={Twitter} alt="Twitter Logo" />Twitter</button>
-          </div>
+        <div className={styles.formContainer}>
+            <button type="button" className={`${styles.twitter} ${styles.buttonLogin}`}><AiOutlineTwitter  size="20" color="#FFF"/><span>Twitter</span></button>
+            <button type="button" className={`${styles.linkedin} ${styles.buttonLogin}`}><FaLinkedinIn size="20"  color="#FFF" /><span>Linkedin</span></button>
+            <button type="button" className={`${styles.github} ${styles.buttonLogin}`}><AiFillGithub  size="20" color="#FFF" /><span>github</span></button>
+        </div>
         </div>
       
         <div className={styles.images}>

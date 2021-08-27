@@ -1,16 +1,15 @@
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin:4rem auto;
     display: flex;
     
     .textContainer {
-        max-width: 400px;
+        flex: 1;
+        text-align:justify;
         margin: 0 5rem;
         display: flex;
-        align-items: center;
         justify-content: center;
         flex-direction: column;
-        
         
         .title{
             width: 100%;
@@ -24,36 +23,38 @@
             font-weight:500;
             margin:0 0 2rem 0;
         }
-        .formContainer{
+        .formContainer {
+            width: 100%;
             display: flex;
-            justify-content: space-around;
-
-            .twitter{
-                background-color: var(--twitter);
-                color: var(--body);
-
-                &:hover{
-                    filter:brightness(0.9)
-                }
+            justify-content: space-between;
+          .buttonLogin {
+            display: flex;
+            justify-content: center;
+            
+            padding:1rem 2rem;
+            margin: 2rem 0;
+            border:0;
+            
+            color:var(--body);
+            
+            span{
+                margin: 0 1rem;
             }
-            .linkedin{
-                background-color: var(--linkedin);
-                color: var(--body);
-                img{
-                    margin: 0 2rem;
-                }
-                &:hover{
-                    filter:brightness(0.9)
-                }
-            }
-            .buttonLogin{
-                margin:2rem 0.4rem;
-                padding:1rem 1.5rem;
-                border: 0;
+
+            &:hover{
+                filter: brightness(0.8);
             }
         }
-       
+        .twitter{
+            background-color:var(--twitter);
+        }
+        .linkedin {
+            background:var(--linkedin)
+        }
+        .github{
+            background:var(--github)
+        }
+        }
     }
-  
     
 }
