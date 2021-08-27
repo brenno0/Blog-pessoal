@@ -24,7 +24,36 @@
             font-weight:500;
             margin:0 0 2rem 0;
         }
-    }
+        .formContainer{
+            display: flex;
+            justify-content: space-around;
 
+            .twitter{
+                background-color: var(--twitter);
+                color: var(--body);
+
+                &:hover{
+                    filter:brightness(0.9)
+                }
+            }
+            .linkedin{
+                background-color: var(--linkedin);
+                color: var(--body);
+                img{
+                    margin: 0 2rem;
+                }
+                &:hover{
+                    filter:brightness(0.9)
+                }
+            }
+            .buttonLogin{
+                margin:2rem 0.4rem;
+                padding:1rem 1.5rem;
+                border: 0;
+            }
+        }
+       
+    }
+  
     
 }
