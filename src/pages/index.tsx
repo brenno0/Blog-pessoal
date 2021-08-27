@@ -3,6 +3,9 @@ import Header from "../components/header";
 import styles from '../styles/home.module.scss';
 import Image  from 'next/image';
 import HomeSvg from '../../public/Home.svg';
+import Twitter from '../../public/twitter.svg';
+import Linkedin from '../../public/Linkedin.svg';
+
 
 export default function Home() {
   return (
@@ -19,10 +22,15 @@ export default function Home() {
             good experience at the end of the product,
             the design will be considered unsuccessful in my opinion.
           </p>
+          <div className={styles.formContainer}>
+            <button type="button" className={`${styles.twitter} ${styles.buttonLogin}`}><Image src={Twitter} alt="Twitter Logo" />Twitter</button>
+            <button type="button" className={`${styles.linkedin} ${styles.buttonLogin}`}><Image src={Linkedin} alt="Linkedin Logo" />Linkedin</button>
+            <button type="button" className={`${styles.twitter} ${styles.buttonLogin}`}><Image src={Twitter} alt="Twitter Logo" />Twitter</button>
+          </div>
         </div>
       
         <div className={styles.images}>
-          <Image src={HomeSvg} alt="Girl Coding" />
+          <Image src={HomeSvg} alt="Guy Reading A Book" />
         </div>
       </div>
     </>
