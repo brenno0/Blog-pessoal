@@ -1,4 +1,5 @@
 import React from "react";
+import { signIn,signOut,useSession } from "next-auth/client"
 import Header from "../components/header";
 import styles from '../styles/home.module.scss';
 import Image  from 'next/image';
@@ -7,6 +8,7 @@ import { AiOutlineTwitter,AiFillGithub } from 'react-icons/ai'
 import { FaLinkedinIn } from 'react-icons/fa'
 
 export default function Home() {
+  const [session,loading] = useSession()
   return (
     <>
       <Header />
@@ -24,7 +26,7 @@ export default function Home() {
         <div className={styles.formContainer}>
             <button type="button" className={`${styles.twitter} ${styles.buttonLogin}`}><AiOutlineTwitter  size="20" color="#FFF"/><span>Twitter</span></button>
             <button type="button" className={`${styles.linkedin} ${styles.buttonLogin}`}><FaLinkedinIn size="20"  color="#FFF" /><span>Linkedin</span></button>
-            <button type="button" className={`${styles.github} ${styles.buttonLogin}`}><AiFillGithub  size="20" color="#FFF" /><span>github</span></button>
+            <button type="button" onClick={() => signIn()} className={`${styles.github} ${styles.buttonLogin}`}><AiFillGithub  size="20" color="#FFF" /><span>github</span></button>
         </div>
         </div>
       
