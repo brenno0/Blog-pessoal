@@ -4,11 +4,34 @@ import Header from "../components/header";
 import styles from '../styles/home.module.scss';
 import Image  from 'next/image';
 import HomeSvg from '../../public/Home.svg';
-import { AiOutlineTwitter,AiFillGithub } from 'react-icons/ai'
-import { FaLinkedinIn } from 'react-icons/fa'
+import {AiFillGithub,AiOutlineGoogle } from 'react-icons/ai'
+import { AiFillFacebook } from 'react-icons/ai'
 
 export default function Home() {
   const [session,loading] = useSession()
+
+
+  const handleWithGithubLogin = () => {
+    if(!session) {
+      signIn('github')
+    }else {
+      // history.push('/posts')
+    }
+  }
+  const handleFacebookLogin = () => {
+    if(!session) {
+      signIn('facebook')
+    }else {
+      // history.push('/posts')
+    }
+  }
+  const handleGoogleLogin = () => {
+    if(!session) {
+      signIn('google')
+    }else {
+      // history.push('/posts')
+    }
+  }
   return (
     <>
       <Header />
@@ -24,9 +47,9 @@ export default function Home() {
             the design will be considered unsuccessful in my opinion.
           </p>
         <div className={styles.formContainer}>
-            <button type="button" className={`${styles.twitter} ${styles.buttonLogin}`}><AiOutlineTwitter  size="20" color="#FFF"/><span>Twitter</span></button>
-            <button type="button" className={`${styles.linkedin} ${styles.buttonLogin}`}><FaLinkedinIn size="20"  color="#FFF" /><span>Linkedin</span></button>
-            <button type="button" onClick={() => signIn()} className={`${styles.github} ${styles.buttonLogin}`}><AiFillGithub  size="20" color="#FFF" /><span>github</span></button>
+            <button type="button" onClick={() => handleGoogleLogin()} className={`${styles.google} ${styles.buttonLogin}`}><AiOutlineGoogle  size="20" color="#FFF"/><span>Google</span></button>
+            <button type="button" onClick={() => handleFacebookLogin()} className={`${styles.linkedin} ${styles.buttonLogin}`}><AiFillFacebook size="20"  color="#FFF" /><span>Facebook</span></button>
+            <button type="button" onClick={() => handleWithGithubLogin()} className={`${styles.github} ${styles.buttonLogin}`}><AiFillGithub  size="20" color="#FFF" /><span>github</span></button>
         </div>
         </div>
       

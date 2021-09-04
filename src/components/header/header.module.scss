@@ -1,5 +1,5 @@
 .container {
-    max-width: 1000px;
+    max-width: 1005px;
     padding: 0 2rem;
     margin: 1rem auto;
     display: flex;
@@ -11,24 +11,40 @@
         color:var(--gray-200);
     }
     .headerMenu {
-        ul{
-            display: flex;
-            gap: 2rem;
-            margin:1.75rem 0;
-            list-style-type: none;
-            color: var(--gray-100);
-            
-            li{
-                transition: 0.6s;
-                &:hover{
-                    color: var(--purple-300);
-                }
+        display: flex;
+        gap:0.8rem;
+        margin:1.75rem 0;
+        list-style-type: none;
+        color: var(--gray-100);
+        img{
+            border-radius: 3rem;
+            height:48px;
+        }
+        .userDescription{
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+            .name{
+                color:var(--pink-300);
+                font-weight: bold;
+            }
+            .email{
+                font-size: 0.8rem;
             }
         }
+        .logoutIcon{
+            color:var(--pink-300);
+            margin-top: 0.9rem;
+            cursor: pointer;
+        }    
     }
     
 }
     
 .selected{
     color:var(--purple-300);
+}
+.loginSugestion{
+    font-size: 1.3rem;
+    font-weight: bold;
+    color:var(--gray-200);
 }
