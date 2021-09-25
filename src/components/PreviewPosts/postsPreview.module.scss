@@ -1,0 +1,32 @@
+.postsContainer {
+    margin:12rem auto;
+    max-width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    gap:3rem;
+
+    .postContainer{
+        width: 45%;
+        .postDate{
+            margin: 1rem 0;
+            color: var(--gray-200);
+            font-weight: bold;
+        }
+        .postTitle{
+            color:var(--pink-300);
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .postDescription{
+            margin: 1rem 0;
+            text-align: left;
+            color:var(--gray-200)
+        }
+        a{
+            color:var(--pink-300);
+            text-decoration: underline;
+            margin:1rem 0;
+        }
+    }
+
+}

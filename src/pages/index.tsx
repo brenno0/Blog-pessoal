@@ -1,11 +1,16 @@
 import React from "react";
-import { signIn,signOut,useSession } from "next-auth/client"
 import Header from "../components/header";
-import styles from '../styles/home.module.scss';
+import { PreviewPosts } from '../components/PreviewPosts/index';
+
+import { signIn,signOut,useSession } from "next-auth/client"
+
 import Image  from 'next/image';
 import HomeSvg from '../../public/Home.svg';
+
 import {AiFillGithub,AiOutlineGoogle } from 'react-icons/ai'
 import { AiFillFacebook } from 'react-icons/ai'
+
+import styles from '../styles/home.module.scss';
 
 export default function Home() {
   const [session,loading] = useSession()
@@ -57,6 +62,8 @@ export default function Home() {
           <Image src={HomeSvg} alt="Guy Reading A Book" />
         </div>
       </div>
+          <PreviewPosts />
+
     </>
   )
 }

@@ -7,7 +7,6 @@ import {FiLogOut} from 'react-icons/fi'
 
 export default function Header() {
     const [session,loading] = useSession();
-    console.log(session);
 
     const sessionLogout = () => {
         if(session) {
