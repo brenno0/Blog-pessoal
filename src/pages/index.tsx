@@ -3,6 +3,11 @@ import Header from "../components/header";
 import { PreviewPosts } from '../components/PreviewPosts/index';
 
 import { signIn,signOut,useSession } from "next-auth/client"
+import { GetStaticProps } from 'next';
+import { getPrismicClient } from '../services/prismic';
+import Prismic from '@prismicio/client';
+import { RichText } from 'prismic-dom'
+
 
 import Image  from 'next/image';
 import HomeSvg from '../../public/Home.svg';
@@ -11,8 +16,22 @@ import {AiFillGithub,AiOutlineGoogle } from 'react-icons/ai'
 import { AiFillFacebook } from 'react-icons/ai'
 
 import styles from '../styles/home.module.scss';
+interface PostsData { 
+  uid:string;
+  lastPublicationDate:string;
+  data:{
+      image:{
+        src:string;
+      };
+      title:string;
+      description:string;
+  }
+}
+interface PostsProps {
+  posts:PostsData[];
+}
 
-export default function Home() {
+export default function Home({posts}:PostsProps) {
   const [session,loading] = useSession()
 
 
@@ -62,8 +81,40 @@ export default function Home() {
           <Image src={HomeSvg} alt="Guy Reading A Book" />
         </div>
       </div>
-          <PreviewPosts />
+        <PreviewPosts posts={posts}/>
 
     </>
   )
 }
+export const getStaticProps:GetStaticProps = async () => {
+
+  const prismic = getPrismicClient();
+  const response = await prismic.query(
+    [Prismic.predicates.at('document.type', 'publication')
+  ],{
+    pageSize:100,
+  }
+  );
+
+  const posts = response.results.map(post => {
+      return {
+        uid:post.uid,
+        lastPublicationDate:post.last_publication_date,
+        data:{
+          image:{
+            src:post.data.image.url,
+          },
+          title:post.data.title.map(title =>  {return title.text}),
+          description:post.data.content.substr(0,50) + '...'
+        },
+      }
+  })
+  const log = posts.map(post => post.data.title)
+  console.log('response',log)
+  return{
+    props:{
+      posts,
+    }
+  }
+}
+
