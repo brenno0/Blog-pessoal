@@ -3,6 +3,9 @@ import styles from './postsPreview.module.scss';
 import moment from 'moment'
 
 import { useState } from 'react';
+import { session, signIn } from 'next-auth/client';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/dist/client/router';
 interface PostsData { 
     uid:string;
     lastPublicationDate:string;
@@ -18,12 +21,25 @@ interface PostsData {
     posts?:PostsData[];
   }
 
+export const PreviewPosts = ({posts}: PostsProps,) => {
 
-export const PreviewPosts = ({posts}: PostsProps) => {
+  const router = useRouter();
+
+  const handleRedirectClickedLink = (e) => {
+    e.preventDefault();
+    if(!session){
+      signIn('google')
+    }else {
+      const uid = posts.map(post => post.uid)
+      router.push(`/posts/${uid}`)
+    }
+    console.log('session',session)
+  }
+  
     return (
         <main className={styles.postsContainer}>
             {posts?.map(post => (
-                <div className={styles.postContainer}>
+                <div key={post.uid} className={styles.postContainer}>
                 <img height={300} width={450}  className={styles.postImage} src={post.data.image.src} />
                 <div className={styles.postDate}> {moment(post.lastPublicationDate).format('DD/MM/YYYY')} </div>
                 <h2 className={styles.postTitle}> {post.data.title} </h2>
@@ -31,7 +47,7 @@ export const PreviewPosts = ({posts}: PostsProps) => {
                    {post.data.description}
                 </div>
 
-                <Link href='/'><a>READ MORE</a></Link>
+                <button className={styles.buttonProperties} onClick={(e) => handleRedirectClickedLink(e)}><a>READ MORE</a></button>
             </div>
             ))}
         </main>

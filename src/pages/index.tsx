@@ -7,7 +7,7 @@ import { GetStaticProps } from 'next';
 import { getPrismicClient } from '../services/prismic';
 import Prismic from '@prismicio/client';
 import { RichText } from 'prismic-dom'
-
+import { ToastContainer, toast } from 'react-toastify';
 
 import Image  from 'next/image';
 import HomeSvg from '../../public/Home.svg';
@@ -38,24 +38,20 @@ export default function Home({posts}:PostsProps) {
   const handleWithGithubLogin = () => {
     if(!session) {
       signIn('github')
-    }else {
-      // history.push('/posts')
     }
   }
   const handleFacebookLogin = () => {
     if(!session) {
       signIn('facebook')
-    }else {
-      // history.push('/posts')
     }
   }
   const handleGoogleLogin = () => {
     if(!session) {
       signIn('google')
-    }else {
-      // history.push('/posts')
     }
   }
+
+ 
   return (
     <>
       <Header />
@@ -82,7 +78,7 @@ export default function Home({posts}:PostsProps) {
         </div>
       </div>
         <PreviewPosts posts={posts}/>
-
+        <ToastContainer />
     </>
   )
 }

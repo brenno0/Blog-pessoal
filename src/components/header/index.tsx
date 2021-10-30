@@ -2,14 +2,17 @@ import styles from './header.module.scss';
 import Link from 'next/link';
 import { signIn,signOut,useSession } from "next-auth/client"
 import {FiLogOut} from 'react-icons/fi'
+import { useRouter } from 'next/dist/client/router';
 
 
 
 export default function Header() {
     const [session,loading] = useSession();
+    const router = useRouter();
 
     const sessionLogout = () => {
         if(session) {
+            router.push('/')
             signOut()
         }
     }
