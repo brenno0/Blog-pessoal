@@ -1,0 +1,22 @@
+.postContainer {
+    max-width: 1100px;
+    margin:4rem auto;
+    display: flex;
+    flex-direction: column;
+
+    .imageContainer {
+        display: flex;
+        justify-content:center;
+    }
+
+    .postTitle {
+        margin:4rem 0 2rem 0;
+        color: var(--purple-600);
+    }
+    .postText {
+        margin: 1rem 0;
+        font-size:1.3rem;
+        color:var(--gray-200);
+    }
+    
+}

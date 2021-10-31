@@ -10,11 +10,10 @@ export default function Header() {
     const [session,loading] = useSession();
     const router = useRouter();
 
-    const sessionLogout = () => {
-        if(session) {
-            router.push('/')
-            signOut()
-        }
+    const sessionLogout = async () => {
+      const pushUser = await router.push('/')
+        signOut()
+        return pushUser;
     }
     
     return(

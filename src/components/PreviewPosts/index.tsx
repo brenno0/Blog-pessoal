@@ -3,7 +3,7 @@ import styles from './postsPreview.module.scss';
 import moment from 'moment'
 
 import { useState } from 'react';
-import { session, signIn } from 'next-auth/client';
+import { signIn, useSession } from 'next-auth/client';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/dist/client/router';
 interface PostsData { 
@@ -24,18 +24,19 @@ interface PostsData {
 export const PreviewPosts = ({posts}: PostsProps,) => {
 
   const router = useRouter();
+  const [ session,status ] = useSession()
 
   const handleRedirectClickedLink = (e) => {
-    e.preventDefault();
-    if(!session){
-      signIn('google')
-    }else {
+    if(session){
       const uid = posts.map(post => post.uid)
       router.push(`/posts/${uid}`)
+    }else {
+      signIn('google')
     }
     console.log('session',session)
   }
-  
+    
+
     return (
         <main className={styles.postsContainer}>
             {posts?.map(post => (
