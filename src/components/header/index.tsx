@@ -18,7 +18,7 @@ export default function Header() {
     
     return(
         <header className={styles.container}>
-            <div className={styles.logo}><h1>BrBlog</h1></div>
+            <div className={styles.logo}><a href="/"><h1>BrBlog</h1></a></div>
             <div className={styles.headerMenu}>
                 <img src={session?.user.image} />
                 <div className={styles.userDescription}>
