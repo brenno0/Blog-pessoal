@@ -106,7 +106,6 @@ export const getStaticProps:GetStaticProps = async () => {
       }
   })
   const log = posts.map(post => post.data.title)
-  console.log('response',log)
   return{
     props:{
       posts,

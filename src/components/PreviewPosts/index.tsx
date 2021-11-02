@@ -33,7 +33,6 @@ export const PreviewPosts = ({posts}: PostsProps,) => {
     }else {
       signIn('google')
     }
-    console.log('session',session)
   }
     
 
